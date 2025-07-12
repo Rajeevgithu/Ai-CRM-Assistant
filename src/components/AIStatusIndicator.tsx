@@ -31,7 +31,7 @@ export default function AIStatusIndicator() {
         isMock: !!data.isMock,
         lastChecked: new Date()
       });
-    } catch (error) {
+    } catch {
       setStatus({
         isOperational: false,
         isMock: false,

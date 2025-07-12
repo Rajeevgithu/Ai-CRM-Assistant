@@ -3,7 +3,6 @@
 import Header from "@/components/Header";
 import ChatBox from "@/components/ChatBox";
 import WidgetPanel from "@/components/WidgetPanel";
-import Link from "next/link";
 import { BarChart3, Users, TrendingUp, Target } from "lucide-react";
 import { useQuery } from '@tanstack/react-query';
 

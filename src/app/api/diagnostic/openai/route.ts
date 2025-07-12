@@ -16,7 +16,7 @@ export async function GET() {
       maxTokens: 10
     });
 
-    const response = await model.invoke('Hello');
+    await model.invoke('Hello');
     
     return NextResponse.json({ 
       ok: true, 

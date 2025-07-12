@@ -30,7 +30,7 @@ export default function PerformanceMonitor() {
         setMetrics({
           loadTime: Math.round(loadTime),
           renderTime: Math.round(renderTime),
-          memoryUsage: (performance as any).memory?.usedJSHeapSize
+          memoryUsage: (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory?.usedJSHeapSize
         });
       });
     };

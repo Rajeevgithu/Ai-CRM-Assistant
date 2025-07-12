@@ -5,12 +5,10 @@ import { Card } from "./ui/card";
 import { 
   TrendingUp, 
   Users, 
-  DollarSign, 
   Target, 
   AlertTriangle, 
   Calendar,
   BarChart3,
-  PieChart,
   Activity
 } from "lucide-react";
 import TopCustomers from "@/components/TopCustomers";

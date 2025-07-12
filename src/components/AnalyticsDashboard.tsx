@@ -3,21 +3,7 @@
 import { useState } from 'react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
-import { 
-  TrendingUp, 
-  TrendingDown, 
-  DollarSign, 
-  Users, 
-  Target, 
-  Calendar,
-  BarChart3,
-  PieChart,
-  Activity,
-  ArrowUpRight,
-  ArrowDownRight,
-  Eye,
-  Download
-} from 'lucide-react';
+import { DollarSign, Users, Target, BarChart3, ArrowUpRight, ArrowDownRight, Eye, Download } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 
 interface AnalyticsData {

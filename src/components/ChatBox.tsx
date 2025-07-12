@@ -13,15 +13,6 @@ interface Message {
   suggestion?: string;
 }
 
-const SUGGESTED_QUESTIONS = [
-  "What are our top performing customers?",
-  "How is our sales pipeline looking?",
-  "What's our revenue forecast for next quarter?",
-  "Which customers are at risk of churning?",
-  "What actions should we take to improve sales?",
-  "Analyze our lead conversion rates"
-];
-
 export default function ChatBox() {
   const [messages, setMessages] = useState<Message[]>([
     {

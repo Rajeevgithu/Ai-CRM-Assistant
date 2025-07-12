@@ -16,7 +16,10 @@ export async function POST(req: NextRequest) {
       isActive: true,
     });
     return NextResponse.json({ message: 'Customer added successfully!', id: customer._id });
-  } catch (error: any) {
-    return NextResponse.json({ message: error.message || 'Error adding customer' }, { status: 500 });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json({ message: error.message || 'Error adding customer' }, { status: 500 });
+    }
+    return NextResponse.json({ message: 'Error adding customer' }, { status: 500 });
   }
 } 

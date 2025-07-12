@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Customer from '@/models/Customer';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
     const customers = await Customer.find({ isActive: true })
