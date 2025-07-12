@@ -247,11 +247,11 @@ const sendEmailTool = new DynamicTool({
         timestamp: new Date().toISOString()
       });
     } catch (error) {
-      return JSON.stringify({
+      return {
         success: false,
         error: 'Failed to send email',
-        details: error.message
-      });
+        details: error instanceof Error ? error.message : String(error)
+      };
     }
   },
 });
@@ -290,7 +290,7 @@ const analyzeDocumentTool = new DynamicTool({
       return JSON.stringify({
         success: false,
         error: 'Failed to analyze document',
-        details: error.message
+        details: error instanceof Error ? error.message : String(error)
       });
     }
   },
