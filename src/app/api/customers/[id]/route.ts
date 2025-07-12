@@ -11,7 +11,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
       return NextResponse.json({ message: 'Customer not found' }, { status: 404 });
     }
     return NextResponse.json({ message: 'Customer soft deleted' });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json({ message: 'Error deleting customer', error }, { status: 500 });
   }
 }
@@ -26,7 +26,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       return NextResponse.json({ message: 'Customer not found' }, { status: 404 });
     }
     return NextResponse.json({ message: 'Customer updated', customer });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json({ message: 'Error updating customer', error }, { status: 500 });
   }
 } 

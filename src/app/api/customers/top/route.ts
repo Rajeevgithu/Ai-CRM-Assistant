@@ -10,7 +10,7 @@ export async function GET() {
       .limit(5)
       .select('_id name itemPurchased totalSpent lastPurchase isActive');
     return NextResponse.json({ customers });
-  } catch (error) {
+  } catch (error: unknown) {
     return NextResponse.json({ error: 'Failed to fetch customers.' }, { status: 500 });
   }
 } 

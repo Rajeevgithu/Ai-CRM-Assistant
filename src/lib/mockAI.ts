@@ -139,7 +139,7 @@ export async function getEnhancedMockResponse(userMessage: string): Promise<Mock
       }
     }
     
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error getting enhanced mock response:', error);
   }
   

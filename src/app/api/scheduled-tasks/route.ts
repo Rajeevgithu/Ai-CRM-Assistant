@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
         follow_up_emails: new Date(Date.now() + 86400000).toISOString()
       }
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching scheduled tasks:', error);
     return NextResponse.json({ error: 'Failed to fetch scheduled tasks' }, { status: 500 });
   }
@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
       result,
       executedAt: new Date().toISOString()
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error executing scheduled task:', error);
     return NextResponse.json({ error: 'Failed to execute scheduled task' }, { status: 500 });
   }
@@ -224,7 +224,7 @@ async function sendFollowUpEmails() {
         lastContact: today
       });
       
-    } catch (error) {
+    } catch (error: unknown) {
       emailResults.push({
         lead: lead.name,
         email: lead.email,

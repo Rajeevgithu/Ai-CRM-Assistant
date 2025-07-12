@@ -23,7 +23,7 @@ export async function GET() {
       message: 'OpenAI API connected successfully',
       model: 'gpt-3.5-turbo'
     });
-  } catch (error) {
+  } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown OpenAI API error';
     
     // Provide specific guidance for common errors

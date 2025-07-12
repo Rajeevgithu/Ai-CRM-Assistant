@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
     setCachedData(cacheKey, result);
     
     return NextResponse.json(result);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching leads:', error);
     return NextResponse.json({ error: 'Failed to fetch leads' }, { status: 500 });
   }
@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
         const { runAgent } = await import('../../../lib/langchain');
         const reply = await runAgent(body.message);
         return NextResponse.json({ reply });
-      } catch (error) {
+      } catch (error: unknown) {
         console.log('OpenAI API unavailable, using mock response:', error);
         
         // Fallback to mock AI service
@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
       lead,
       message: 'Lead created successfully' 
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error creating lead:', error);
     return NextResponse.json({ error: 'Failed to create lead' }, { status: 500 });
   }
@@ -136,7 +136,7 @@ export async function PUT(req: NextRequest) {
       lead,
       message: 'Lead updated successfully' 
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error updating lead:', error);
     return NextResponse.json({ error: 'Failed to update lead' }, { status: 500 });
   }
@@ -164,7 +164,7 @@ export async function DELETE(req: NextRequest) {
       success: true,
       message: 'Lead deleted successfully' 
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error deleting lead:', error);
     return NextResponse.json({ error: 'Failed to delete lead' }, { status: 500 });
   }

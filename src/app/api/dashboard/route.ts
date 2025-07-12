@@ -58,7 +58,7 @@ export async function GET() {
     };
 
     return NextResponse.json(dashboardData.analytics);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching dashboard data:', error);
     return NextResponse.json(
       { error: 'Failed to fetch dashboard data' },

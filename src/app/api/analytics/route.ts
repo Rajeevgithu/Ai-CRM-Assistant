@@ -138,7 +138,7 @@ export async function GET() {
     };
 
     return NextResponse.json(analyticsData);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error fetching analytics:', error);
     return NextResponse.json(
       { error: 'Failed to fetch analytics data' },
