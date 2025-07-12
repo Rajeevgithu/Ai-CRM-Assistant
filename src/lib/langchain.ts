@@ -246,7 +246,7 @@ const sendEmailTool = new DynamicTool({
         type: type || 'general',
         timestamp: new Date().toISOString()
       });
-    } catch (error) {
+    } catch (error: unknown) {
       return {
         success: false,
         error: 'Failed to send email',
@@ -286,7 +286,7 @@ const analyzeDocumentTool = new DynamicTool({
       };
       
       return JSON.stringify(analysis);
-    } catch (error) {
+    } catch (error: unknown) {
       return JSON.stringify({
         success: false,
         error: 'Failed to analyze document',
@@ -364,7 +364,7 @@ Example: ["get_customer_insights", "create_action_plan"]
         try {
           const result = await tool.func(query);
           results[toolName] = result;
-        } catch (error) {
+        } catch (error: unknown) {
           console.error(`Error executing tool ${toolName}:`, error);
           results[toolName] = { error: 'Tool execution failed', details: error instanceof Error ? error.message : 'Unknown error' };
         }
@@ -427,7 +427,7 @@ Response:
       
       return response.content as string;
       
-          } catch (error) {
+          } catch (error: unknown) {
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         console.error('Agent execution error:', errorMessage);
         return "I apologize, but I encountered an error while processing your request. Please try again or contact support if the issue persists.";
@@ -459,7 +459,7 @@ Response:
         console.log(`Running scheduled task: ${task.name}`);
         // In a real implementation, this would check if the task should run
         // and execute the appropriate actions
-              } catch (error) {
+              } catch (error: unknown) {
           const errorMessage = error instanceof Error ? error.message : 'Unknown error';
           console.error(`Error running scheduled task ${task.name}:`, errorMessage);
         }
