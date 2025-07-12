@@ -6,22 +6,51 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "setup": "node scripts/setup-env.js",
+    "build:analyze": "ANALYZE=true next build",
+    "build:prod": "NODE_ENV=production next build",
+    "start:prod": "NODE_ENV=production next start",
+    "check-customers": "npx tsx scripts/checkCustomers.ts",
+    "check-all-customers": "npx tsx scripts/checkAllCustomers.ts",
+    "check-databases": "npx tsx scripts/checkMultipleDatabases.ts",
+    "setup-local-db": "npx tsx scripts/setupLocalDatabase.ts",
+    "copy-to-atlas": "npx tsx scripts/copyToAtlas.ts",
+    "test-leads": "npx tsx scripts/testLeadForm.ts",
+    "seed": "npx tsx scripts/seedCustomers.ts",
+    "clear-customers": "npx tsx scripts/clearCustomers.ts",
+    "fix-customers": "npx tsx scripts/fixCustomerData.ts",
+    "recover-data": "npx tsx scripts/recoverCustomerData.ts"
   },
   "dependencies": {
+    "@langchain/openai": "^0.5.18",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tanstack/react-query": "^5.82.0",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.10.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.1.0",
+    "langchain": "^0.3.29",
+    "lucide-react": "^0.525.0",
+    "mongoose": "^8.16.3",
+    "next": "15.3.5",
+    "openai": "^5.8.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.5"
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/mongoose": "^5.11.96",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "tw-animate-css": "^1.3.5",
+    "typescript": "^5"
   }
 }
