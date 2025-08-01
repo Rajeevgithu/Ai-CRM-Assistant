@@ -4,18 +4,8 @@
 export function preloadCriticalResources() {
   if (typeof window === 'undefined') return;
 
-  // Preload critical images
-  const criticalImages = [
-    '/favicon.ico'
-  ];
-
-  criticalImages.forEach(src => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.href = src;
-    link.as = 'image';
-    document.head.appendChild(link);
-  });
+  // Only preload resources that are actually used
+  // Removed favicon preload to avoid console warnings
 }
 
 // Optimize navigation performance

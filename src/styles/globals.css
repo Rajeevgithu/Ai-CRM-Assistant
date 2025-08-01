@@ -136,6 +136,9 @@
     /* Improve mobile scrolling */
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    /* Fix text size adjustment compatibility */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   /* Responsive typography */
@@ -168,6 +171,12 @@
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
+  }
+
+  /* Backdrop filter compatibility */
+  .backdrop-blur {
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
   }
 }
 
