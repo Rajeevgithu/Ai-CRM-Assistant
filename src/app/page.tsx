@@ -14,8 +14,9 @@ export default function HomePage() {
       if (!response.ok) throw new Error('Failed to fetch dashboard data');
       return response.json();
     },
-    staleTime: 0,
-    refetchOnMount: true,
+    staleTime: 30000, // Cache for 30 seconds
+    refetchOnMount: false, // Don't refetch on mount if we have cached data
+    refetchOnWindowFocus: false, // Don't refetch when window gains focus
   });
 
   const analytics = data;

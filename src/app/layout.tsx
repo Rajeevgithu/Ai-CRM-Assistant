@@ -17,16 +17,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "CRM Assistant Dashboard",
   description: "AI-powered CRM dashboard for business insights",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
-  themeColor: "#2563EB",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "CRM Assistant",
-  },
   formatDetection: {
     telephone: false,
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#2563EB',
 };
 
 export default function RootLayout({
@@ -40,7 +41,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta name="theme-color" content="#2563EB" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="CRM Assistant" />
         <meta name="format-detection" content="telephone=no" />

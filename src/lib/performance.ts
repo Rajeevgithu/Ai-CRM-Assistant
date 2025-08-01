@@ -6,8 +6,7 @@ export function preloadCriticalResources() {
 
   // Preload critical images
   const criticalImages = [
-    '/next.svg',
-    '/vercel.svg'
+    '/favicon.ico'
   ];
 
   criticalImages.forEach(src => {
