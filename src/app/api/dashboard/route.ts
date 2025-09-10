@@ -8,11 +8,10 @@ export async function GET() {
     // Check if MongoDB URI is configured
     const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URI;
     if (!mongoUri) {
-      console.error('MongoDB URI not configured');
       return NextResponse.json(
         { 
-          error: 'Database not configured. Please set MONGODB_URI environment variable.',
-          details: 'This usually happens when deploying to Vercel without proper environment variables.'
+          error: 'Database not configured',
+          details: 'Set MONGODB_URI in your Render service Environment.',
         },
         { status: 500 }
       );
@@ -81,6 +80,8 @@ export async function GET() {
         errorMessage = 'Database connection failed. Please check your MongoDB connection string.';
       } else if (error.message.includes('Authentication failed')) {
         errorMessage = 'Database authentication failed. Please check your MongoDB credentials.';
+      } else if (error.message.includes('bad auth') || error.message.includes('URI')) {
+        errorMessage = `MongoDB error: ${error.message}`;
       } else {
         errorMessage = error.message;
       }
@@ -89,7 +90,7 @@ export async function GET() {
     return NextResponse.json(
       { 
         error: errorMessage,
-        details: 'This usually indicates a database connection issue. Check your environment variables on Vercel.'
+        details: 'Check MONGODB_URI in Render Environment. Ensure IP access and credentials are correct.'
       },
       { status: 500 }
     );
