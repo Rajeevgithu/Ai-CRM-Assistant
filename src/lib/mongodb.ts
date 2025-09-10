@@ -1,14 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-// Load environment variables
+// Load environment variables for local/dev; in Render these come from the environment
 dotenv.config({ path: '.env.local' });
-
-const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI as string;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define either MONGODB_URI or MONGO_URI environment variable inside .env.local');
-}
 
 let cached = (global as any).mongoose;
 
@@ -17,10 +11,15 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  const mongoUri = process.env.MONGODB_URI || (process.env.MONGO_URI as string);
+  if (!mongoUri) {
+    // Defer error until runtime call, not at import time
+    throw new Error('Missing MONGODB_URI or MONGO_URI environment variable');
+  }
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose);
+    cached.promise = mongoose.connect(mongoUri).then((mongoose) => mongoose);
   }
 
   cached.conn = await cached.promise;
